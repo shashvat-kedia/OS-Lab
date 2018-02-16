@@ -1,0 +1,59 @@
+ls 
+ls 
+ls -a 
+ls -a -l 
+quit 
+ls  
+gedit a.c 
+gedit 
+atom 
+atom & 
+atom & 
+ls 
+ls 
+atom 
+ls 
+cd a 
+ls 
+emacs 
+atom 
+gedit 
+gedit & 
+gedit a.c& 
+gedit a.c 
+gedit a.C & 
+LS 
+ls 
+ls & 
+ls & 
+ls 
+ls & 
+gedit & 
+ls 
+cd a 
+ls 
+clear 
+ls -l -a 
+pwd 
+cd .. 
+pwd 
+gedit& 
+gedit & 
+ 
+gedit 
+ge 
+ 
+gedit & 
+ 
+gedit & 
+ls 
+ 
+history 
+history 
+ge 
+ 
+quit 
+history 
+cat hhd 
+history 
+quit 
