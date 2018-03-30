@@ -10,20 +10,34 @@ int main(int argc , char* argsv[]){
   char readBuffer[100];
   char writeBuffer[100];
   int read_counter;
+  int targetfile;
+  FILE *targetFilePtr;
 
   pipe(fd); /* create pipe */
 
-  if(argc < 3){
-    printf("Enter atleast 3 parameters\n");
+  if(argc < 2){
+    printf("Enter atleast 2 parameters\n");
+    exit(1);
+  }
+  if(argc == 2){
+      targetfile = open("/Users/shashvatkedia/Desktop/default.txt" , 0666);
+  }
+  int openfile = open(argsv[1] ,0);
+
+  if(openfile == -1){
+    printf("Error in opening file\n");
     exit(1);
   }
 
-  int openfile = open(argsv[1] ,0);
-  int targetfile = open(argsv[2] , 0666);
-
-  if(openfile == -1 || targetfile == -1){
-    printf("Error in opening file\n");
-    exit(1);
+  if(targetfile == -1 && argc == 2){
+    targetFilePtr = fopen("/Users/shashvatkedia/Desktop/default.txt","w");
+    fclose(targetFilePtr);
+    targetfile = open("/Users/shashvatkedia/Desktop/default.txt" , 0666);
+  }
+  else if(targetfile == -1 && argc == 3){
+    targetFilePtr = fopen(argsv[2],"w");
+    fclose(targetFilePtr);
+    targetfile = open(argsv[2] , 0666);
   }
 
   cpid = fork();
@@ -36,7 +50,7 @@ int main(int argc , char* argsv[]){
     /* child only reads. Close the write end */
     close(fd[1]);
     read(fd[0] , readBuffer , sizeof(readBuffer));
-    printf("the recived string is %s\n",readBuffer );
+    //printf("the recived string is %s\n",readBuffer );
 
     write(targetfile , readBuffer , strlen(readBuffer));
 
